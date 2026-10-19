@@ -138,8 +138,9 @@ class McpClient:
             One tool per server tool, in server order.
 
         Raises:
-            GenkitError: ``FAILED_PRECONDITION`` if this client is closed, or
-                ``UNAVAILABLE`` if the server cannot be started.
+            GenkitError: ``FAILED_PRECONDITION`` if this client is closed,
+                ``UNAVAILABLE`` if the server cannot be started, or
+                ``DEADLINE_EXCEEDED`` if it does not answer in time.
             ValueError: If two of the server's tools share a Genkit tool name
                 once the characters the model providers reject are rewritten.
         """
@@ -159,8 +160,9 @@ class McpClient:
         generate. Any other loop reconnects when it next asks for a tool.
 
         Raises:
-            GenkitError: ``FAILED_PRECONDITION`` if this client is closed, or
-                ``UNAVAILABLE`` if the server cannot be started.
+            GenkitError: ``FAILED_PRECONDITION`` if this client is closed,
+                ``UNAVAILABLE`` if the server cannot be started, or
+                ``DEADLINE_EXCEEDED`` if it does not answer in time.
             ValueError: If two of the server's tools share a Genkit tool name
                 once the characters the model providers reject are rewritten.
         """
